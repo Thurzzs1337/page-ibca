@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Igreja Batista Central em Américanópolis- Acolhendo Corações</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos Gerais */
+        :root {
+            --primary-color: #4CAF50; /* Verde */
+            --secondary-color: #6A1B9A; /* Roxo */
+            --text-color: #333;
+            --light-bg: #f9f9f9;
+            --dark-bg: #222;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--secondary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: #fff;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        .nav-menu ul {
+            display: flex;
+        }
+
+        .nav-menu li {
+            margin-left: 30px;
+        }
+
+        .nav-menu a {
+            color: var(--text-color);
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://via.placeholder.com/1500x800/6A1B9A/FFFFFF?text=Igreja+Exemplo') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 100px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 60vh;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            max-width: 700px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background-color: #388E3C; /* Verde mais escuro */
+        }
+
+        /* Seções de Conteúdo */
+        .section {
+            padding: 60px 0;
+        }
+
+        .section:nth-child(even) {
+            background-color: var(--light-bg);
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 10px auto 0;
+        }
+
+        /* Sobre Nós */
+        .about-content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-content img {
+            max-width: 400px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        /* Eventos */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .event-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .event-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .event-card-content {
+            padding: 20px;
+        }
+
+        .event-card h3 {
+            margin-top: 0;
+            font-size: 1.5em;
+            color: var(--secondary-color);
+        }
+
+        .event-card p {
+            font-size: 0.95em;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .event-card .btn {
+            display: inline-block;
+            padding: 8px 15px;
+            font-size: 0.9em;
+        }
+
+        /* Mensagens */
+        .messages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .message-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 25px;
+            text-align: center;
+        }
+
+        .message-card i {
+            font-size: 3em;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .message-card h3 {
+            margin-top: 0;
+            color: var(--secondary-color);
+        }
+
+        .message-card audio {
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        /* Contato */
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+        }
+
+        .contact-info, .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--primary-color);
+            font-size: 1.2em;
+        }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-form label {
+            font-weight: 600;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .contact-form button {
+            background-color: var(--secondary-color);
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #5D1480; /* Roxo mais escuro */
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: var(--dark-bg);
+            color: #fff;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+
+        footer .social-icons a {
+            color: #fff;
+            font-size: 1.5em;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        footer p {
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: #fff;
+                position: absolute;
+                top: 70px; /* Ajustar conforme altura do cabeçalho */
+                left: 0;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li {
+                margin: 0;
+                text-align: center;
+                border-bottom: 1px solid #eee;
+            }
+
+            .nav-menu a {
+                display: block;
+                padding: 15px 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .hero p {
+                font-size: 1.1em;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .about-content img {
+                max-width: 100%;
+            }
+
+            .contact-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Igreja Batista Central em Americanópolis</div>
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#about">Sobre Nós</a></li>
+                    <li><a href="#events">Eventos</a></li>
+                    <li><a href="#messages">Mensagens</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <h1>Bem-vindos à Igreja Batista Central em Americanópolis</h1>
+            <p>Um lugar de fé, esperança e amor, onde todos são acolhidos.</p>
+            <a href="#events" class="btn">Veja Nossos Eventos</a>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container">
+                <h2>Sobre Nós</h2>
+                <div class="about-content">
+                    <img src="c:\Users\Eliez\Downloads\WhatsApp Image 2025-06-09 at 20.18.38.jpeg" alt="">
+                    <div class="about-text">
+                        <h3>Nossa Missão e Valores</h3>
+                        <p>A Igreja Batista Central em Americanópolis-+ é uma comunidade vibrante dedicada a compartilhar o amor de Deus, servir ao próximo e crescer na fé. Acreditamos na importância da comunhão, do ensinamento bíblico e do serviço ativo em nossa sociedade.</p>
+                        <p>Desde nossa fundação em [Ano de Fundação], temos sido um farol de esperança para muitas famílias, oferecendo um ambiente acolhedor e inspirador para todos que buscam uma conexão mais profunda com a espiritualidade.</p>
+                        <p>Nossos valores fundamentais incluem compaixão, integridade, serviço, fé e comunidade. Convidamos você a se juntar a nós em nossa jornada de fé e descoberta.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="events" class="section">
+            <div class="container">
+                <h2>Próximos Eventos</h2>
+                <div class="events-grid">
+                    <div class="event-card">
+                        <p>Culto Dominical</p>
+                        <div class="event-card-content">
+                            <h3>Escola Bíblica Dominical</h3>
+                            <p>Junte-se a nós para nosso culto principal todos os domingos.</p>
+                            <p><i class="fas fa-calendar-alt"></i> Domingo</p>
+                            <p><i class="fas fa-clock"></i> 17:00 AM</p>
+                            
+                        </div>
+                    </div>
+                    <div class="event-card">
+                        <p>Estudo Bíblico</p>
+                        <div class="event-card-content">
+                            <h3>Estudo Bíblico</h3>
+                            <p>Aprofunde-se nas escrituras com nosso estudo semanal.</p>
+                            <p><i class="fas fa-calendar-alt"></i> Quarta-feira</p>
+                            <p><i class="fas fa-clock"></i> 20:00 PM</p>
+                            
+                        </div>
+                    </div>
+                    <div class="event-card">
+                        <p>Cultos</p>
+                        <div class="event-card-content">
+                            <h3>Cultos</h3>
+                            
+                            <p><i class="fas fa-calendar-alt"></i>Domingo</p>
+                            <p><i class="fas fa-clock"></i> 18:30 PM</p>
+                             <p><i class="fas fa-calendar-alt"></i>Quarta-Feira</p>
+                            <p><i class="fas fa-clock"></i> 20:00 PM</p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="messages" class="section">
+            <div class="container">
+                <h2>Nossas Mensagens</h2>
+                <div class="messages-grid">
+                    <div class="message-card">
+                        <i class="fas fa-bible"></i>
+                        <h3>Fé Inabalável</h3>
+                        <p>Uma mensagem sobre como fortalecer sua fé em tempos de desafio.</p>
+                        <audio controls src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+                    </div>
+                    <div class="message-card">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <h3>O Poder do Amor</h3>
+                        <p>Explore o significado e a importância do amor em nossas vidas.</p>
+                        <audio controls src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"></audio>
+                    </div>
+                    <div class="message-card">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>Esperança para o Amanhã</h3>
+                        <p>Encontre inspiração e esperança para o futuro, mesmo nas incertezas.</p>
+                        <audio controls src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"></audio>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container">
+                <h2>Fale Conosco</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Informações de Contato</h3>
+                        <p><i class="fas fa-map-marker-alt"></i>R. Jorge Rubens Neiva de Camargo, 30 - Americanópolis, São Paulo - SP, 04337-090</p>
+                        <p><i class="fas fa-phone"></i> (XX) XXXX-XXXX</p>
+                        <p><i class="fas fa-envelope"></i> contato@igrejaexemplo.org</p>
+                        <p><i class="fas fa-envelope"></i> Instagram: ibca.oficial</p>
+                        <div style="margin-top: 20px;">
+                            <iframe src="c:\Users\Eliez\OneDrive\Imagens\Screenshots\Captura de tela 2025-06-09 203608.png" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <h3>Envie uma Mensagem</h3>
+                        <form action="#" method="POST">
+                            <label for="name">Nome:</label>
+                            <input type="text" id="name" name="name" required>
+
+                            <label for="email">E-mail:</label>
+                            <input type="email" id="email" name="email" required>
+
+                            <label for="subject">Assunto:</label>
+                            <input type="text" id="subject" name="subject" required>
+
+                            <label for="message">Mensagem:</label>
+                            <textarea id="message" name="message" required></textarea>
+
+                            <button type="submit">Enviar Mensagem</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p>&copy; 2025 Igreja Batista Central em Americanópolis. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // Fechar o menu ao clicar em um link (apenas para mobile)
+        document.querySelectorAll('.nav-menu a').forEach(item => {
+            item.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
